@@ -75,7 +75,7 @@ public class Scanner {
             }
 
             // Операторы и лямбда стрелка ->
-            if ("-+*/=<>!&|".indexOf(c) != -1) {
+            if ("-+*/=>".indexOf(c) != -1) {
                 int startPos = col;
                 int startGlobal = pos;
                 StringBuilder op = new StringBuilder();
@@ -86,14 +86,8 @@ public class Scanner {
                 if (pos < len) {
                     char nextC = text.charAt(pos);
                     if ((c == '-' && nextC == '>') || // ->
-                        (c == '=' && nextC == '=') || // ==
-                        (c == '!' && nextC == '=') || // !=
-                        (c == '<' && nextC == '=') || // <=
-                        (c == '>' && nextC == '=') || // >=
                         (c == '+' && nextC == '+') || // ++
-                        (c == '-' && nextC == '-') || // --
-                        (c == '&' && nextC == '&') || // &&
-                        (c == '|' && nextC == '|')) { // ||
+                        (c == '-' && nextC == '-')) { // --
                         op.append(nextC);
                         pos++;
                         col++;
