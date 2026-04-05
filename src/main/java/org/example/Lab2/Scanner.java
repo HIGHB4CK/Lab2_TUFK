@@ -21,7 +21,6 @@ public class Scanner {
         while (pos < len) {
             char c = text.charAt(pos);
 
-            // Обработка пробелов и переносов строк
             if (Character.isWhitespace(c)) {
                 int startPos = col;
                 int startGlobal = pos;
@@ -41,7 +40,6 @@ public class Scanner {
                 continue;
             }
 
-            // Идентификаторы и ключевые слова
             if (Character.isLetter(c) || c == '_' || c == '$') {
                 int startPos = col;
                 int startGlobal = pos;
@@ -60,7 +58,6 @@ public class Scanner {
                 continue;
             }
 
-            // Числа
             if (Character.isDigit(c)) {
                 int startPos = col;
                 int startGlobal = pos;
@@ -74,7 +71,6 @@ public class Scanner {
                 continue;
             }
 
-            // Операторы и лямбда стрелка ->
             if ("-+*/=>".indexOf(c) != -1) {
                 int startPos = col;
                 int startGlobal = pos;
@@ -103,7 +99,6 @@ public class Scanner {
                 continue;
             }
 
-            // Разделители (скобки, запятые, точки с запятой)
             if ("(){},;.".indexOf(c) != -1) {
                 int startPos = col;
                 int startGlobal = pos;
@@ -115,7 +110,6 @@ public class Scanner {
                 continue;
             }
 
-            // Строковые литералы
             if (c == '"' || c == '\'') {
                 int startPos = col;
                 int startGlobal = pos;
@@ -148,7 +142,6 @@ public class Scanner {
                 continue;
             }
 
-            // Ошибка: недопустимый символ
             int startPos = col;
             int startGlobal = pos;
             tokens.add(new Token(17, "ошибка (недопустимый символ)", String.valueOf(c), line, startPos, col, startGlobal, pos));

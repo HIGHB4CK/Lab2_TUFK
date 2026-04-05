@@ -58,7 +58,6 @@ public class HelloController {
 
         textArea2.setEditable(false);
 
-        // Инициализация таблицы
         codeCol.setCellValueFactory(new PropertyValueFactory<>("code"));
         typeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
         lexemeCol.setCellValueFactory(new PropertyValueFactory<>("text"));
@@ -66,10 +65,8 @@ public class HelloController {
         
         resultTable.setItems(tokenData);
 
-        // Обработчик выбора строки таблицы для навигации к ошибке
         resultTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSel, newSel) -> {
             if (newSel != null && newSel.getCode() == 17) {
-                // Если это ошибка, перемещаем курсор и выделяем текст
                 textArea.requestFocus();
                 textArea.selectRange(newSel.getGlobalStart(), newSel.getGlobalEnd());
             }
